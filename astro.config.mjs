@@ -8,6 +8,9 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ["astro.gatoartstudio.com"]
+    },
     build: {
       rollupOptions: {
         input: [

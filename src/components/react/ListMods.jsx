@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import TitleWiki from "./TitleWiki";
-import ParLeft from "./ParLeft";
-import Link from "./Link";
 import Spam from "./Spam";
-import ButtomWiki from "./ButtomWiki";
 import SubTitleWiki from "./SubTitleWiki";
 import HoverModWiki from "./HoverModWiki";
 
@@ -15,7 +12,6 @@ export default function ListMods() {
     const [totalModsDependientes, setTotalModsDependientes] = useState(new Set());
     const [totalComplementos, setTotalComplementos] = useState(0);
     const [totalComplementosDependientes, setTotalComplementosDependientes] = useState(new Set());
-    const [totalModsComplementos, setTotalModsComplementos] = useState(0);
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/GatoArtStudio/kailand/config/mods.json')

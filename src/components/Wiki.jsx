@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Inicio from "./Inicio.jsx";
 import ButtomWiki from "./react/ButtomWiki.jsx";
 import Guia from "./Guia.jsx";

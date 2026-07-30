@@ -13,7 +13,7 @@ const { href = '', title, body, animation, typetarget, id = 'None', style = '' }
 const isClickable = href !== '';
 ---
 
-<li class={`link-card bg-gradient-to-br from-green-400 to-blue-500 cursor-pointer`} data-aos={animation} id={id}>
+<li class={`link-card bg-linear-to-br from-green-400 to-blue-500 cursor-pointer`} data-aos={animation} id={id}>
 	{isClickable ? (
 		<a href={href} target={typetarget} data-aos={animation}>
 			<h2>
@@ -41,7 +41,7 @@ const isClickable = href !== '';
 		list-style: none;
 		display: flex;
 		padding: 1px;
-		background-color: ;
+		background-color: rgba(28, 41, 28, 0.5);
 		background-image: none;
 		background-size: 400%;
 		border-radius: 7px;

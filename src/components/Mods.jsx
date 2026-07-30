@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import ListMods from "./react/ListMods";
 import InfoMods from "./InfoMods.jsx";
 
