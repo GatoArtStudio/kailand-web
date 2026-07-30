@@ -1,4 +1,4 @@
-# Proyecto web en Astro🚀 
+# Proyecto web en Astro🚀
 
 
 [Discord](https://discord.com/invite/chwAE86T6W)
