@@ -18,7 +18,7 @@ export default function ListMods() {
     const [totalModsComplementos, setTotalModsComplementos] = useState(0);
 
     useEffect(() => {
-        fetch('https://raw.githubusercontent.com/GatoArtStudios/kailand/config/mods.json')
+        fetch('https://raw.githubusercontent.com/GatoArtStudio/kailand/config/mods.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al obtener los datos de la API');
