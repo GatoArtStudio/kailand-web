@@ -1,5 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
+import '../../global.css';
 interface Props {
 	title?: string;
 	description?: string;
@@ -22,7 +23,7 @@ const { url = "https://www.kailand.es", title = "Descubre Kailand: Tu Aventura D
 		<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/GatoArtStudios/kailand/web/public/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<ViewTransitions />
+		<ClientRouter />
 		<!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
 	</head>
 	<body class="bg-gradient-to-r from-slate-900 via-green-950 to-indigo-950">

@@ -10,21 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/react": "^3.6.0",
-    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/react": "^6.0.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "aos": "^2.3.4",
-    "astro": "^7.1.1",
+    "astro": "^7.1.6",
     "npx": "^10.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-modal-image": "^2.6.0",
-    "tailwind": "^4.0.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.5.3"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.4.6"
   }
 }

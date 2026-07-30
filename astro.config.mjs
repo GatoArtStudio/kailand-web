@@ -1,19 +1,13 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-
 import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  load: [async () => ({
-    base: process.env.NODE_ENV === 'production' ? '/kailand/' : '/',
-    site: {
-      keywords: ['kailand', 'sitio', 'web', 'minecraft', 'kailand', 'server'],
-      url: 'https://www.kailand.es'
-    }
-  })],
-  integrations: [tailwind(), react()],
+  base: process.env.NODE_ENV === 'production' ? '/kailand/' : '/',
+  integrations: [react()],
   vite: {
+    plugins: [tailwindcss()],
     build: {
       rollupOptions: {
         input: [
