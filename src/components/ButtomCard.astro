@@ -1,117 +1,124 @@
 ---
-
 interface Props {
-    title: string;
-    href: string;
-    img: string;
-    animation: string;
-    animation_time: string;
+	title: string;
+	href: string;
+	img?: string;
+	label?: string;
+	animation?: string;
+	animation_time?: string;
 }
 
-const { href, title, img, animation, animation_time } = Astro.props;
+const {
+	href,
+	title,
+	img,
+	label,
+	animation = 'fade-up',
+	animation_time = '0'
+} = Astro.props;
 ---
 
 <a
-    href={href}
-    target='_blank'
-    class="
-      button 
-      mx-6 
-      hover:-translate-x-1 
-      hover:-translate-y-1 
-      font-bold 
-      px-4 
-      my-3 
-      w-1/3 
-      md:w-1/2 
-      sm:w-96 
-      h-16 
-      flex 
-      items-center 
-      justify-center
-      min-[200px]:w-4/5
-      "
-    data-aos={animation}
-    data-aos-delay={animation_time}
-    >
-    <img src={img} alt="" class="w-10 md:w-7 sm:w-7 sm:h-7 h-10 text-white" style="filter: invert();">
-    <h2 class="text-white inline w-full text-center text-lg -translate-x-5">
-        {title}
-    </h2>
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	class="social-btn"
+	data-aos={animation}
+	data-aos-delay={animation_time}
+>
+	<span class="social-icon" aria-hidden="true">
+		{img && <img src={img} alt="" />}
+	</span>
+	<span class="social-text">
+		<span class="social-title">{title}</span>
+		{label && <span class="social-label">{label}</span>}
+	</span>
+	<span class="social-shine" aria-hidden="true"></span>
 </a>
 
 <style>
-.button {
-  position: relative;
-  padding: 10px 20px;
-  border-radius: 7px;
-  border: 1px solid #00ff38;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 2px;
-  background: transparent;
-  color: #fff;
-  overflow: hidden;
-  box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
+	.social-btn {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		width: 100%;
+		max-width: 420px;
+		padding: 0.9rem 1.25rem;
+		border-radius: 12px;
+		background: rgba(10, 20, 15, 0.5);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		border: 1px solid var(--border-glow);
+		color: var(--text-primary);
+		text-decoration: none;
+		overflow: hidden;
+		transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+	}
+	.social-btn::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(90deg, transparent, rgba(0, 255, 102, 0.18), transparent);
+		transform: translateX(-100%);
+		transition: transform 0.6s ease;
+		pointer-events: none;
+	}
+	.social-btn:hover {
+		transform: translateY(-3px);
+		border-color: var(--green-neon);
+		background: rgba(0, 255, 102, 0.08);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(0, 255, 102, 0.3);
+	}
+	.social-btn:hover::before { transform: translateX(100%); }
 
-.button:hover {
-  background: #00ff38;
-  box-shadow: 0 0 30px 5px rgba(0, 236, 71, 0.815);
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-}
+	.social-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+		background: rgba(0, 255, 102, 0.1);
+		border: 1px solid var(--border-glow);
+		flex-shrink: 0;
+	}
+	.social-icon img {
+		width: 22px;
+		height: 22px;
+		filter: invert(1);
+	}
 
-.button:hover::before {
-  -webkit-animation: sh02 0.5s 0s linear;
-  -moz-animation: sh02 0.5s 0s linear;
-  animation: sh02 0.5s 0s linear;
-}
+	.social-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.2;
+	}
+	.social-title {
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--text-primary);
+	}
+	.social-label {
+		font-size: 0.82rem;
+		color: var(--text-muted);
+		margin-top: 2px;
+	}
 
-.button::before {
-  content: '';
-  display: block;
-  width: 0px;
-  height: 86%;
-  position: absolute;
-  top: 7%;
-  left: 0%;
-  opacity: 0;
-  background: #fff;
-  box-shadow: 0 0 50px 30px #fff;
-  -webkit-transform: skewX(-20deg);
-  -moz-transform: skewX(-20deg);
-  -ms-transform: skewX(-20deg);
-  -o-transform: skewX(-20deg);
-  transform: skewX(-20deg);
-}
-
-@keyframes sh02 {
-  from {
-    opacity: 0;
-    left: 0%;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    left: 100%;
-  }
-}
-
-.button:active {
-  box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: box-shadow 0.2s ease-in;
-  -moz-transition: box-shadow 0.2s ease-in;
-  transition: box-shadow 0.2s ease-in;
-}
-
+	.social-shine {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 80px;
+		background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+		transform: skewX(-20deg) translateX(-150%);
+		transition: transform 0.7s ease;
+		opacity: 0;
+		pointer-events: none;
+	}
+	.social-btn:hover .social-shine {
+		opacity: 1;
+		transform: skewX(-20deg) translateX(420px);
+	}
 </style>

@@ -1,0 +1,77 @@
+---
+interface Props {
+	eyebrow?: string;
+	title: string;
+	subtitle?: string;
+	id?: string;
+	align?: 'left' | 'center';
+	animation?: string;
+};
+
+const {
+	eyebrow,
+	title,
+	subtitle,
+	id,
+	align = 'left',
+	animation = 'fade-up'
+} = Astro.props;
+---
+
+<section class={`section section--${align}`} id={id}>
+	<div class="section-header" data-aos={animation}>
+		{eyebrow && <span class="section-eyebrow">{eyebrow}</span>}
+		<h2 class="section-title display">{title}</h2>
+		{subtitle && <p class="section-subtitle">{subtitle}</p>}
+	</div>
+	<div class="section-body">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.section {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 3rem 1.5rem;
+		scroll-margin-top: 90px;
+	}
+	.section--center .section-header { text-align: center; }
+	.section--center .section-header .section-eyebrow,
+	.section--center .section-header .section-subtitle {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.section-header { margin-bottom: 2rem; }
+	.section--center .section-header { display: flex; flex-direction: column; align-items: center; }
+
+	.section-eyebrow {
+		display: inline-block;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		color: var(--green-neon);
+		padding: 0.25rem 0.75rem;
+		border: 1px solid var(--border-glow);
+		border-radius: 100px;
+		background: rgba(0, 255, 102, 0.08);
+		margin-bottom: 1rem;
+	}
+	.section-title {
+		margin: 0;
+		font-size: clamp(1.75rem, 4vw, 2.75rem);
+		font-weight: 900;
+		letter-spacing: -0.02em;
+		color: var(--text-primary);
+		line-height: 1.1;
+	}
+	.section-subtitle {
+		margin: 0.75rem 0 0;
+		font-size: 1.05rem;
+		color: var(--text-muted);
+		max-width: 60ch;
+		line-height: 1.55;
+	}
+</style>
