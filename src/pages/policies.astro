@@ -1,51 +1,130 @@
 ---
-import Layout from '../layouts/Contact.astro';
-import NavBar from '../components/NavBar.astro';
-import ParLeft from '../components/react/ParLeft';
-import SubTitleWiki from '../components/react/SubTitleWiki';
+import Layout from '../layouts/Layout.astro';
+import 'aos/dist/aos.css';
+
+const sections = [
+	{
+		title: 'Información que se recopila',
+		body: 'Nuestro launcher recopila la siguiente información: el <strong>Nickname</strong> que utilices como usuario dentro del juego.'
+	},
+	{
+		title: 'Información adicional sobre el servidor de Minecraft',
+		body: 'Nuestro servidor no recopila ninguna información personal adicional de los jugadores. No almacenamos direcciones IP ni ningún otro dato proporcionado por el juego durante las conexiones a nuestro servidor de Minecraft. Toda la información recopilada es mínima y se utiliza únicamente para permitir la conexión del usuario y garantizar una experiencia de juego segura. Solo se almacena la contraseña utilizada en el plugin LoginSecurity, con altos estándares de seguridad de la industria, para proteger tu cuenta en modo offline.'
+	},
+	{
+		title: 'Protección contra ataques DDoS',
+		body: 'En caso de un ataque DDoS (Denegación de Servicio Distribuido) contra nuestros servidores, se almacena la dirección IP de las máquinas involucradas en el ataque. Esta información es utilizada por un plugin de seguridad para bloquear conexiones futuras desde esas direcciones IP. Las IP recopiladas se almacenan en una base de datos protegida con estrictas medidas de seguridad y solo se compartirán con las autoridades competentes en caso de una orden judicial.'
+	},
+	{
+		title: 'Uso de la información recopilada',
+		body: 'Nuestro sitio web es un sitio estático, por lo cual no tiene <em>backend</em> (pieza de software que gestiona la lógica del servidor y el almacenamiento de datos), ni mecánica para la recopilación de datos. El launcher está diseñado específicamente para mantener un registro de usuarios, usando los estándares más altos de seguridad del sector del desarrollo de la informática.'
+	},
+	{
+		title: 'Seguridad de tus datos',
+		body: 'Kailand está altamente comprometido con mantener su información segura. Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos de que no exista ningún acceso no autorizado.<br><br>Kailand no venderá ningún tipo de información. Ni cederá, ni distribuirá la información que es recopilada sin su consentimiento, salvo que sea requerido por un juez con un orden judicial.'
+	},
+	{
+		title: 'Cambios a esta política',
+		body: 'Kailand se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento. Le recomendamos revisar continuamente esta página para asegurarse de que está de acuerdo con dichos cambios.'
+	}
+];
 ---
-<Layout url='https://www.kailand.es/policies' title="Kailand: Políticas de privacidad" description="Políticas de privacidad de Kailand">
-    <NavBar />
-    <main class="text-white flex flex-col items-center">
-        <div class="h-10"></div>
-        <h1 class="text-3xl text-white text-center w-full" style="font-family: 'Anton', sans-serif">Políticas de privacidad de Kailand</h1>
-        <div class="h-10"></div>
-        <div class="w-10/12"  style="font-family: 'Roboto', sans-serif; font-size: 700; font-style: bold;">
-            <ParLeft>
-                La presente Política de Privacidad establece los términos en que Kailand usa y protege la información que es proporcionada por sus usuarios al momento de utilizar el sistema de registro y inicio de sesión del servidor de minecraft o su launcher. En Kailand estamos comprometidos con la seguridad de los datos de nuestros usuarios. Lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento. Sin embargo, esta Política de Privacidad puede cambiar con el tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.
-            </ParLeft>
-            <SubTitleWiki text="Información que es recogida" />
-            <ParLeft>
-                Nuestro launcher recoger la siguiente información: Nickname, que utilices como usuario dentro del juego.
-            </ParLeft>
-            <SubTitleWiki text="Información adicional sobre el servidor de Minecraft" />
-            <ParLeft>
-                Nuestro servidor no recopila ninguna información personal adicional de los jugadores. No almacenamos direcciones IP ni ningún otro dato proporcionado por el juego durante las conexiones a nuestro servidor de Minecraft. Toda la información recolectada es mínima y se utiliza únicamente para permitir la conexión del usuario y garantizar una experiencia de juego segura. Solo se almacena la contraseña utilizada en el plugin LoginSecurity, con altos estándares de seguridad de la industria, para proteger tu cuenta en modo offline.
-            </ParLeft>
-            <SubTitleWiki text="Protección contra ataques DDoS" />
-            <ParLeft>
-                En caso de un ataque DDoS (Denegación de Servicio Distribuido) contra nuestros servidores, se almacena la dirección IP de las máquinas involucradas en el ataque. Esta información es utilizada por un plugin de seguridad para bloquear conexiones futuras desde esas direcciones IP. Las IP recopiladas se almacenan en una base de datos protegida con estrictas medidas de seguridad y solo se proporcionarán a las autoridades competentes en caso de una orden judicial.
-            </ParLeft>
-            <SubTitleWiki text="Uso de la información recogida" />
-            <ParLeft>
-                Nuestro sitio web es un sitio estático, por lo cual no tiene Backend (pieza de software que gestiona la lógica del servidor y el almacenamiento de datos), ni mecánica para recolección de datos. El launcher está dirigida particularmente para mantener un registro de usuarios, la cual usa los estándares más altos de seguridad del sector del desarrollo de la informática.
-            </ParLeft>
-            <ParLeft>
-                Kailand está altamente comprometido para mantener su información segura. Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos que no exista ningún acceso no autorizado.
-            </ParLeft>
-            <ParLeft>
-                Kailand no venderá ningún tipo de información. Ni cederá, ni distribuirá la información que es recopilada sin su consentimiento, salvo que sea requerido por un juez con un orden judicial.
-            </ParLeft>
-            <ParLeft>
-                Kailand se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.
-            </ParLeft>
-            <ParLeft>
-                Para cualquier pregunta o preocupación sobre esta Política de Privacidad, por favor contáctenos a <a class="text-blue-500 hover:text-blue-400 font-bold" href="mailto:kailandservidor@gmail.com">kailandservidor@gmail.com</a>
-            </ParLeft>
-        </div>
-    </main>
+
+<Layout
+	url="https://www.kailand.es/policies"
+	title="Kailand · Política de privacidad"
+	description="Política de privacidad de Kailand: cómo se recoge, usa y protege la información."
+>
+	<main class="policies">
+		<section class="hero">
+			<div class="hero-inner">
+				<h1 class="hero-title display" data-aos="fade-zoom-in" data-aos-delay="100">
+					Tu privacidad <span class="text-gradient">nos importa</span>
+				</h1>
+				<p class="hero-tagline" data-aos="fade-up" data-aos-delay="200">
+					La presente Política de Privacidad establece los términos en que Kailand usa y protege la información
+					proporcionada por sus usuarios al momento de utilizar el sistema de registro, inicio de sesión del
+					servidor de Minecraft o su launcher.
+				</p>
+			</div>
+		</section>
+
+		<div class="content">
+			{sections.map((s, i) => (
+				<article class="block glass" data-aos="fade-up" data-aos-delay={String(i * 60)}>
+					<h2 class="block-title display">{s.title}</h2>
+					<p class="block-text" set:html={s.body} />
+				</article>
+			))}
+
+			<article class="block glass contact-block" data-aos="fade-up">
+				<h2 class="block-title display">Contacto</h2>
+				<p class="block-text">
+					Para cualquier pregunta o preocupación sobre esta Política de Privacidad, por favor contáctanos a {" "}
+					<a href="mailto:kailandservidor@gmail.com" class="mail">kailandservidor@gmail.com</a>.
+				</p>
+			</article>
+		</div>
+	</main>
 </Layout>
+
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+	.policies { padding-top: 80px; }
+	.hero {
+		text-align: center;
+		padding: 4rem 1.5rem 1rem;
+	}
+	.hero-inner { max-width: 760px; margin: 0 auto; }
+	.hero-title {
+		margin: 0;
+		font-size: clamp(2rem, 6vw, 3.5rem);
+		font-weight: 900;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+	}
+	.hero-tagline {
+		margin: 1.25rem auto 0;
+		max-width: 60ch;
+		color: var(--text-muted);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.content {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 2rem 1.5rem 3rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.block {
+		padding: 1.75rem;
+	}
+	.block-title {
+		font-size: 1.3rem;
+		font-weight: 800;
+		margin: 0 0 0.75rem;
+		color: var(--green-neon);
+	}
+	.block-text {
+		margin: 0;
+		font-size: 0.97rem;
+		line-height: 1.7;
+		color: var(--text-primary);
+		opacity: 0.92;
+	}
+	.block-text :global(strong) { color: var(--green-neon); font-weight: 700; }
+	.block-text :global(em) { color: var(--violet-accent); font-style: italic; }
+	.block-text :global(.mail) {
+		color: var(--green-neon);
+		text-decoration: none;
+		font-weight: 700;
+		border-bottom: 1px solid transparent;
+		transition: border-color 0.2s ease;
+	}
+	.block-text :global(.mail:hover) { border-color: var(--green-neon); }
+	.contact-block {
+		border-color: rgba(0, 255, 102, 0.35);
+	}
 </style>

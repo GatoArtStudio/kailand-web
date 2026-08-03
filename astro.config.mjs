@@ -10,17 +10,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
     server: {
       allowedHosts: ["astro.gatoartstudio.com"]
-    },
-    build: {
-      rollupOptions: {
-        input: [
-          "src/",
-          "public/"
-        ],
-        external: [
-          "archive/**"
-        ]
-      }
     }
   }
 });

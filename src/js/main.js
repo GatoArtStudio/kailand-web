@@ -1,11 +1,11 @@
 import AOS from 'aos';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // const AOS = require('aos');
-    AOS.init(
-        {
-            duration: 1000,
-            once: true
-        }
-    );
-})
+  AOS.init({
+    duration: 700,
+    once: true,
+    offset: 60,
+    easing: 'ease-out-cubic',
+    disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  });
+});
