@@ -98,6 +98,11 @@ code {
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.glass-only {
+  -webkit-backdrop-filter: blur(50px) saturate(140%);
+  backdrop-filter: blur(50px) saturate(140%);
+}
+
 /* Gradient text (Kailand wordmark) */
 .text-gradient {
   background-image: var(--accent-gradient);
