@@ -89,8 +89,8 @@ code {
 /* Glassmorphism card */
 .glass {
   background: var(--green-glass);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(50px) saturate(140%);
+  -webkit-backdrop-filter: blur(50px) saturate(140%);
   border: 1px solid var(--border-glow);
   border-radius: 16px;
   box-shadow:

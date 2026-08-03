@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
 	title: string;
 	body: string;
@@ -27,11 +29,27 @@ const Tag = isClickable ? 'a' : 'div';
 
 <li class={`card glass card--${accent}`} data-aos={animation} id={id}>
 	<Tag class="card-inner" href={href ? href : undefined} target={isClickable ? target : undefined} rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
-		{icon && <span class="card-icon" aria-hidden="true">{icon}</span>}
-		<div class="card-body">
-			<h2 class="card-title display">{title}</h2>
-			<p class="card-text">{body}</p>
-		</div>
+		{body.length < 70 ? (
+			<>
+				{icon && <span class="card-icon self-center" aria-hidden="true"><Icon name={icon} size={22} /></span>}
+				<div class="card-body flex flex-col justify-center">
+					<h2 class="card-title display">{title}</h2>
+					<p class="card-text">{body}</p>
+				</div>
+			</>
+		) : (
+			<>
+				<div class="flex flex-col gap-3">
+					<div class="flex flex-row items-center gap-3">
+						{icon && <span class="card-icon" aria-hidden="true"><Icon name={icon} size={22} /></span>}
+						<h2 class="card-title display">{title}</h2>
+					</div>
+					<div class="card-body">
+						<p class="card-text">{body}</p>
+					</div>
+				</div>
+			</>
+		)}
 		{isClickable && (
 			<span class="card-arrow" aria-hidden="true">
 				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

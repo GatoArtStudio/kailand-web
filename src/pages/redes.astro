@@ -28,29 +28,25 @@ const socials = [
 	<main>
 		<section class="hero">
 			<div class="hero-inner">
-				<span class="hero-badge" data-aos="fade-down">
-					<span class="hero-badge-dot"></span>
-					Comunidad
-				</span>
 				<h1 class="hero-title display" data-aos="fade-zoom-in" data-aos-delay="100">
 					Nuestras <span class="text-gradient">redes</span>
 				</h1>
 				<p class="hero-tagline" data-aos="fade-up" data-aos-delay="200">
-					Contento, clips y novedades del proyecto. Síguenos en tu plataforma favorita y únete a la comunidad.
+					Contenido, clips y novedades del proyecto. Síguenos en tu plataforma favorita y únete a la comunidad.
 				</p>
 			</div>
 		</section>
 
 		<!-- FLIP CARD -->
 		<section class="flip-block">
-			<div class="flip-card" data-aos="zoom-in">
+			<div class="flip-card flex flex-col group" data-aos="zoom-in">
 				<div class="flip-content">
-					<div class="flip-front glass">
+					<div class="flip-front opacity-100 group-hover:opacity-0 transition-opacity duration-700">
 						<div class="flip-photo">
 							<img src={faviconImg.src} alt="" class="flip-logo" />
 						</div>
 						<strong class="flip-title display text-gradient">Kailand</strong>
-						<span class="flip-subtitle">Servidor de Minecraft · Temporada 5</span>
+						<span class="flip-subtitle">Servidor de Minecraft<br>Temporada 5</span>
 					</div>
 					<div class="flip-back glass">
 						<span class="flip-back-eyebrow">Sobre Nosotros</span>
@@ -59,10 +55,12 @@ const socials = [
 							una experiencia única. Cada bloque y cada aventura están pensados para brindarte
 							el máximo entretenimiento y desafíos épicos.
 						</p>
-						<span class="flip-back-foot">Kailand &nbsp;|&nbsp; Temporada 5</span>
+						<span class="flip-back-foot">Kailand<br>Temporada 5</span>
 					</div>
 				</div>
-				<span class="flip-hint" aria-hidden="true">Pasa el cursor para girar ↺</span>
+				<div class="flex w-full -translate-y-8 justify-center opacity-70 group-hover:opacity-0 group-hover:rotate-y-180 transition-all duration-400">
+					<span class="flip-hint" aria-hidden="true">Pasa el cursor para girar ↺</span>
+				</div>
 			</div>
 		</section>
 
@@ -92,29 +90,6 @@ const socials = [
 		padding: 4rem 1.5rem 1rem;
 	}
 	.hero-inner { max-width: 720px; margin: 0 auto; }
-
-	.hero-badge {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.4rem 0.9rem;
-		border-radius: 100px;
-		background: rgba(0, 255, 102, 0.08);
-		border: 1px solid var(--border-glow);
-		color: var(--green-neon);
-		font-size: 0.78rem;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		margin-bottom: 1.25rem;
-	}
-	.hero-badge-dot {
-		width: 8px; height: 8px;
-		border-radius: 50%;
-		background: var(--green-neon);
-		box-shadow: 0 0 8px var(--green-neon);
-		animation: pulse-glow 2.5s ease-in-out infinite;
-	}
 
 	.hero-title {
 		margin: 0;
@@ -231,13 +206,8 @@ const socials = [
 	}
 
 	.flip-hint {
-		margin-top: 1rem;
 		font-size: 0.8rem;
 		color: var(--text-muted);
-		opacity: 0.7;
-	}
-	@media (hover: none) {
-		.flip-hint { display: none; }
 	}
 
 	/* SOCIAL GRID */
