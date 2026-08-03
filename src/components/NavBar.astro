@@ -1,102 +1,219 @@
 ---
+import DiscordIcon from '../icons/brand-discord.svg';
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => {
+	if (href === '/') return pathname === '/';
+	return pathname.startsWith(href);
+};
+
+const nav = [
+	{ href: '/', label: 'Inicio' },
+	{ href: '/redes', label: 'Redes' },
+	{ href: '/launcher', label: 'Launcher' }
+];
 ---
 
-<div class="bg-transparent h-14 w-full text-end content-center fixed top-0 left-0 mr-52 z-50" transition:persist>
-    <a href="/" class="text-white no-underline mr-5 font-bold button">Inicio</a>
-    <a href="/redes" class="text-white no-underline mr-5 font-bold button">Redes</a>
-    <!-- <a href="/wiki" class="text-white no-underline mr-5 font-bold button">Wiki</a> -->
-    <!-- <a href="/downloads" class="text-white no-underline mr-5 font-bold button">Downloads</a> -->
-</div>
+<header class="nav">
+	<div class="nav-inner">
+		<a href="/" class="nav-logo display text-gradient" transition:name="kailand-wordmark" aria-label="Kailand inicio">
+			Kailand
+		</a>
+
+		<nav class="nav-links" aria-label="Principal">
+			{nav.map((item) => (
+				<a
+					href={item.href}
+					class={`nav-link ${isActive(item.href) ? 'is-active' : ''}`}
+				>
+					{item.label}
+				</a>
+			))}
+		</nav>
+
+		<a href="/discord" class="nav-cta" aria-label="Entrar al Discord">
+			<img src={DiscordIcon.src} alt="" class="nav-cta-icon" />
+			<span>Discord</span>
+		</a>
+
+		<button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+			<span></span><span></span><span></span>
+		</button>
+	</div>
+</header>
+
+<script>
+	const toggle = document.querySelector('.nav-toggle');
+	const links = document.querySelector('.nav-links');
+	toggle?.addEventListener('click', () => {
+		const open = links?.classList.toggle('is-open');
+		toggle.setAttribute('aria-expanded', String(!!open));
+		toggle.classList.toggle('is-open', !!open);
+	});
+	links?.querySelectorAll('a').forEach((a) =>
+		a.addEventListener('click', () => {
+			links.classList.remove('is-open');
+			toggle?.classList.remove('is-open');
+			toggle?.setAttribute('aria-expanded', 'false');
+		})
+	);
+</script>
 
 <style>
-.btn {
-  font-size: 17px;
-  background: transparent;
-  border: none;
-  padding: 1em 1.5em;
-  color: #ffedd3;
-  text-transform: uppercase;
-  position: relative;
-  transition: 0.5s ease;
-  cursor: pointer;
-}
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 50;
+		backdrop-filter: blur(14px) saturate(160%);
+		-webkit-backdrop-filter: blur(14px) saturate(160%);
+		background: rgba(5, 10, 8, 0.7);
+		border-bottom: 1px solid var(--border-glow);
+	}
+	.nav-inner {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0.85rem 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.nav-logo {
+		font-size: 1.4rem;
+		font-weight: 900;
+		letter-spacing: -0.02em;
+		text-decoration: none;
+		padding: 0.2rem 0;
+		transition: filter 0.3s ease;
+	}
+	.nav-logo:hover { filter: drop-shadow(0 0 12px rgba(0, 255, 102, 0.6)); }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 0;
-  background-color: #1bff06;
-  transition: 0.5s ease;
-}
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	.nav-link {
+		position: relative;
+		padding: 0.55rem 1rem;
+		color: var(--text-muted);
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.95rem;
+		letter-spacing: 0.01em;
+		transition: color 0.2s ease;
+		border-radius: 8px;
+	}
+	.nav-link::after {
+		content: '';
+		position: absolute;
+		left: 1rem;
+		right: 1rem;
+		bottom: 0.3rem;
+		height: 2px;
+		background: var(--green-neon);
+		transform: scaleX(0);
+		transform-origin: center;
+		transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		box-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+	}
+	.nav-link:hover {
+		color: var(--text-primary);
+	}
+	.nav-link:hover::after,
+	.nav-link.is-active::after {
+		transform: scaleX(1);
+	}
+	.nav-link.is-active {
+		color: var(--green-neon);
+	}
 
-.btn:hover {
-  color: #1e1e2b;
-  transition-delay: 0.5s;
-}
+	.nav-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.5rem 1rem;
+		border-radius: 10px;
+		background: rgba(88, 101, 242, 0.15);
+		border: 1px solid rgba(88, 101, 242, 0.4);
+		color: #c7cefd;
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 0.9rem;
+		transition: all 0.2s ease;
+	}
+	.nav-cta:hover {
+		background: rgba(88, 101, 242, 0.3);
+		border-color: rgba(88, 101, 242, 0.8);
+		color: #fff;
+		box-shadow: 0 0 18px rgba(88, 101, 242, 0.35);
+	}
+	.nav-cta-icon {
+		width: 18px;
+		height: 18px;
+		filter: invert(1);
+	}
 
-.btn:hover::before {
-  width: 100%;
-}
+	.nav-toggle {
+		display: none;
+		flex-direction: column;
+		gap: 5px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 6px;
+	}
+	.nav-toggle span {
+		width: 24px;
+		height: 2px;
+		background: var(--text-primary);
+		border-radius: 2px;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+	.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+	.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+	.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.btn::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 0;
-  width: 100%;
-  background-color: #1bff06;
-  transition: 0.4s ease;
-  z-index: -1;
-}
+	@media (max-width: 720px) {
+		.nav-toggle { display: flex; }
+		.nav-cta span { display: none; }
+		.nav-cta { padding: 0.5rem; }
+		.nav-cta-icon { margin: 0; }
 
-.btn:hover::after {
-  height: 100%;
-  transition-delay: 0.4s;
-  color: aliceblue;
-}
-
-.button {
-  /* font-size: 18px; */
-  /* color: #e1e1e1; */
-  /* font-family: inherit; */
-  /* font-weight: 800; */
-  cursor: pointer;
-  position: relative;
-  border: none;
-  background: none;
-  text-transform: uppercase;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: color;
-}
-
-.button:focus,
-.button:hover {
-  color: #b4ffb1;
-}
-
-.button:focus:after,
-.button:hover:after {
-  width: 100%;
-  left: 0%;
-}
-
-.button:after {
-  content: "";
-  pointer-events: none;
-  bottom: -2px;
-  left: 50%;
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background-color: #09ff00;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: width, left;
-}
-
+		.nav-links {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.25rem;
+			padding: 1rem 1.5rem 1.25rem;
+			background: rgba(5, 10, 8, 0.95);
+			border-bottom: 1px solid var(--border-glow);
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+			max-height: 0;
+			overflow: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+		.nav-links.is-open {
+			max-height: 320px;
+			opacity: 1;
+			pointer-events: auto;
+			padding-top: 1rem;
+			padding-bottom: 1.25rem;
+		}
+		.nav-link {
+			padding: 0.75rem 1rem;
+			font-size: 1rem;
+		}
+		.nav-link::after { left: 1rem; right: auto; width: 30%; }
+	}
 </style>
